@@ -24,6 +24,10 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'simple-import-sort', 'prettier'],
   rules: {
+    'no-unused-vars': [
+      'warn',
+      { ignoreRestSiblings: true, argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+    ],
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/accessible-emoji': 'off',
