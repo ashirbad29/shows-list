@@ -1,10 +1,18 @@
+import { useState } from 'react';
+
 import Navbar from '../components/Navbar';
-import ShowCard from '../components/ShowCard';
+import Paginate from '../components/Paginate';
+import ShowsList from '../components/ShowsList';
 import { useGenres, usePopularList } from '../services/index';
 
+type ParamsType = {
+  page: number;
+};
+
 const Popular = () => {
+  const [params, setParams] = useState<ParamsType>({ page: 1 });
   const { data: _genre } = useGenres('movie');
-  const { data: popularList, isLoading } = usePopularList('movie');
+  const { data: popularList, isLoading } = usePopularList('movie', params);
 
   return (
     <main className="container h-full">
@@ -14,20 +22,21 @@ const Popular = () => {
           <div>Loading...</div>
         ) : (
           <>
-            {popularList?.results && popularList.results.length > 0 ? (
-              <div className="flex flex-wrap mt-10 justify-around sm:justify-start gap-x-4 gap-y-12">
-                {popularList.results.map((show: any) => (
-                  <ShowCard
-                    key={show.id}
-                    title={show.title}
-                    imageUrl={show.poster_path}
-                    genre_ids={show.genre_ids}
-                    release_date={show.release_date}
-                  />
-                ))}
+            <div className="flex-1">
+              <ShowsList showList={popularList?.results} />
+            </div>
+            {popularList?.results && popularList.results.length > 0 && (
+              <div className="mb-14 mt-10 flex w-full justify-center">
+                <Paginate
+                  onPageChange={(nextPage) =>
+                    setParams((params) => ({ ...params, page: nextPage.selected + 1 }))
+                  }
+                  pageCount={popularList?.total_pages}
+                  forcePage={params.page - 1 || 0}
+                  pageRangeDisplayed={1}
+                  marginPagesDisplayed={2}
+                />
               </div>
-            ) : (
-              <div>No Results Found!</div>
             )}
           </>
         )}

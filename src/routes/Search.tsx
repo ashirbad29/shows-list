@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import Navbar from '../components/Navbar';
-import ShowCard from '../components/ShowCard';
+import ShowsList from '../components/ShowsList';
 import { useSearch } from '../services/index';
 import { debounce } from '../utils/debounce';
 
@@ -14,29 +14,13 @@ const Search = () => {
   const { data: searchList, isLoading } = useSearch('movie', { query, page: 1 });
 
   return (
-    <main className="container h-full">
+    <main className="container h-full flex flex-col">
       <Navbar onSearchInputChange={(val) => debouncedSetQuery(val)} />
-      <section className="flex flex-col">
+      <section className="flex flex-col flex-1">
         {isLoading ? (
-          <div>Loading...</div>
+          <div className="flex-1 flex items-center justify-center">Loading...</div>
         ) : (
-          <>
-            {searchList?.results && searchList.results.length > 0 ? (
-              <div className="flex flex-wrap mt-10 justify-around sm:justify-start gap-x-4 gap-y-12">
-                {searchList?.results.map((show: any) => (
-                  <ShowCard
-                    key={show.id}
-                    title={show.title}
-                    imageUrl={show.poster_path}
-                    genre_ids={show.genre_ids}
-                    release_date={show.release_date}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div>No Results Found!</div>
-            )}
-          </>
+          <ShowsList showList={searchList?.results || []} />
         )}
       </section>
     </main>

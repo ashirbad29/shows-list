@@ -1,5 +1,5 @@
 import Navbar from '../components/Navbar';
-import ShowCard from '../components/ShowCard';
+import ShowsList from '../components/ShowsList';
 import { useNewestShows } from '../services/index';
 
 const Newest = () => {
@@ -8,27 +8,11 @@ const Newest = () => {
   return (
     <main className="container h-full">
       <Navbar />
-      <section className="flex flex-col">
+      <section className="flex flex-col flex-1">
         {isLoading ? (
-          <div>Loading...</div>
+          <div className="flex-1 flex items-center justify-center">Loading...</div>
         ) : (
-          <>
-            {newestList?.results && newestList.results.length > 0 ? (
-              <div className="flex flex-wrap mt-10 justify-around sm:justify-start gap-x-4 gap-y-12">
-                {newestList.results.map((show: any) => (
-                  <ShowCard
-                    key={show.id}
-                    title={show.title}
-                    imageUrl={show.poster_path}
-                    genre_ids={show.genre_ids}
-                    release_date={show.release_date}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div>No Results Found!</div>
-            )}
-          </>
+          <ShowsList showList={newestList?.results || []} />
         )}
       </section>
     </main>

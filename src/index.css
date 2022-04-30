@@ -15,5 +15,5 @@ code {
 }
 
 .container {
-  @apply max-w-screen-2xl text-white p-4 md:py-6 md:pl-6 md:pr-4 min-h-screen;
+  @apply max-w-screen-2xl text-white p-4 md:py-6 md:pl-6 md:pr-4 min-h-screen flex flex-col;
 }
