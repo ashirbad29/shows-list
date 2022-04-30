@@ -1,0 +1,10 @@
+export { default as Newest } from './Newest';
+export * from './Newest';
+export { default as Popular } from './Popular';
+export * from './Popular';
+export { default as Search } from './Search';
+export * from './Search';
+export { default as TopRated } from './TopRated';
+export * from './TopRated';
+export { default as Trending } from './Trending';
+export * from './Trending';

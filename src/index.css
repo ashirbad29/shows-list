@@ -13,3 +13,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.container {
+  @apply max-w-screen-2xl text-white p-4 md:py-6 md:pl-6 md:pr-4 min-h-screen;
+}
