@@ -6,8 +6,6 @@ const Popular = () => {
   const { data: _genre } = useGenres('movie');
   const { data: popularList, isLoading } = usePopularList('movie');
 
-  console.log(popularList);
-
   return (
     <main className="container h-full">
       <Navbar />
@@ -16,7 +14,7 @@ const Popular = () => {
           <div>Loading...</div>
         ) : (
           <>
-            {popularList.results && popularList.results.length > 0 ? (
+            {popularList?.results && popularList.results.length > 0 ? (
               <div className="flex flex-wrap mt-10 justify-around sm:justify-start gap-x-4 gap-y-12">
                 {popularList.results.map((show: any) => (
                   <ShowCard
@@ -29,7 +27,7 @@ const Popular = () => {
                 ))}
               </div>
             ) : (
-              <div>List is empty</div>
+              <div>No Results Found!</div>
             )}
           </>
         )}
