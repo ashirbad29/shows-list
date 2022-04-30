@@ -29,6 +29,7 @@ module.exports = {
       { ignoreRestSiblings: true, argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+    camelcase: 'off',
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/accessible-emoji': 'off',
     'react/prop-types': 'off',
