@@ -10,7 +10,7 @@ const Paginate = (props: ReactPaginateProps) => {
       breakLabel=". . ."
       breakLinkClassName="text-2xl text-blue-500"
       pageLinkClassName="px-3 py-1 cursor-pointer inline-block"
-      activeClassName="bg-blue-500 !border-none"
+      activeClassName="!bg-blue-500 !border-none"
       nextClassName="inline-block rounded bg-gray-900"
       nextLinkClassName="inline-block flex items-center py-1 px-1"
       previousClassName="inline-block rounded bg-gray-900"

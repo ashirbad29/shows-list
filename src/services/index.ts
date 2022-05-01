@@ -35,14 +35,17 @@ export const fetchGenres = async (type: 'movie' | 'tv') => {
 };
 
 export const useGenres = (type: 'movie' | 'tv') => {
-  return useQuery(['genres', type], () => fetchGenres(type));
+  return useQuery(['genres', type], () => fetchGenres(type), {
+    staleTime: 1000 * 60 * 10,
+  });
 };
 
 /* Top Rated */
-export const fetchTopRatedList = async (type: 'movie' | 'tv') => {
+export const fetchTopRatedList = async (type: 'movie' | 'tv', params = {}) => {
   const { data } = await axios.get(`/${type}/top_rated/`, {
     params: {
       ...defaultParams,
+      ...params,
     },
   });
 
@@ -50,22 +53,27 @@ export const fetchTopRatedList = async (type: 'movie' | 'tv') => {
 };
 
 export const useTopRatedList = (type: 'movie' | 'tv', params = {}) => {
-  return useQuery(['topRated', type, { ...params }], () => fetchTopRatedList(type));
+  return useQuery(['topRated', type, { ...params }], () =>
+    fetchTopRatedList(type, params)
+  );
 };
 
 /* Trending Shows */
-export const fetchTrendingShows = async (type: 'tv' | 'movie') => {
+export const fetchTrendingShows = async (type: 'tv' | 'movie', params = {}) => {
   const { data } = await axios.get(`/trending/${type}/week`, {
     params: {
       ...defaultParams,
+      ...params,
     },
   });
 
   return data;
 };
 
-export const useTrendingShows = (type: 'tv' | 'movie') => {
-  return useQuery(['trendingShows', type], () => fetchTrendingShows(type));
+export const useTrendingShows = (type: 'tv' | 'movie', params = {}) => {
+  return useQuery(['trendingShows', type, { ...params }], () =>
+    fetchTrendingShows(type, params)
+  );
 };
 
 /* Newest Shows */
@@ -101,6 +109,8 @@ export const fetchSearch = async (type: 'movie' | 'tv', params = {}) => {
   return data;
 };
 
-export const useSearch = (type: 'movie' | 'tv', params = {}) => {
-  return useQuery(['search', type, params], () => fetchSearch(type, params));
+export const useSearch = (type: 'movie' | 'tv', page: number, query: string) => {
+  return useQuery(['search', type, page, query], () =>
+    fetchSearch(type, { page, query })
+  );
 };

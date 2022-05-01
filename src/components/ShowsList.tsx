@@ -20,7 +20,9 @@ const ShowsList = ({ showList }: ShowListType) => {
           ))}
         </div>
       ) : (
-        <div className="flex-1 flex items-center justify-center">No Results Found!</div>
+        <div className="flex-1 flex items-center justify-center text-2xl">
+          No Results Found!
+        </div>
       )}
     </>
   );
