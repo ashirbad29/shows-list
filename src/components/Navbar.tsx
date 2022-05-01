@@ -54,7 +54,7 @@ const Navbar = ({ onSearchInputChange }: NavbarType) => {
         {!onSearchPage ? (
           <Link
             to="/search"
-            className="text-gray-200 hover:bg-blue-200/5 px-2 py-1 rounded-md flex items-center">
+            className="text-gray-200 hover:bg-blue-200/5 px-2 py-1 rounded-md flex items-center transition-colors">
             <SearchIcon className="w-4 h-4 inline-block mr-2" />
             <span className="text-blue-400 font-semibold text-xs">SEARCH</span>
           </Link>

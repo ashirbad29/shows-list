@@ -1,11 +1,27 @@
-# Vite typescript eslint prettier setup
+# Movies/TV Shows Listing Page
 
 ### Features
 
-- Eslint prettier typescript Config
-- Import sort config for eslint
-- React Hooks plugin for esling
-- Tailwind setup (check out `tailwind-setup` branch)
-- Vite 🔥
+- Popular shows
+- Trending shows
+- Top rated shows
+- Newest shows
+- Search by movie title
+- Filter by show type (movie / tv show)
+- Filter by rating
+- Filter by various Genres
+- Filter by a range of year
 
-_use this as boilerplate template for your react typescript projects_
+### Instructions for Setup
+
+1. Navigate to the project directory
+2. `yarn` to install dependencies
+3. `yarn build`
+4. `yarn preview` (exposes the server on http://localhost:5000)
+
+### Tech Used
+
+- React
+- React Query for date fetching
+- Tailwindcss (a utility classes based css framework)
+- Axios to make api requests

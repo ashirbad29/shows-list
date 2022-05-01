@@ -28,6 +28,7 @@ const SelectInput = (props: SelectInputProps) => {
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
+
   const handleChange = (optionId: string) => {
     onChangeValue && onChangeValue(optionId);
     setIsOpen(false);

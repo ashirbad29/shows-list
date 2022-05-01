@@ -16,7 +16,7 @@ const ShowsList = ({ showList, type }: ShowListType) => {
               title={show.title || show.name || ''}
               imageUrl={show.poster_path}
               genre_ids={show.genre_ids}
-              release_date={show.release_date || null}
+              release_date={show.release_date || show.first_air_date || null}
               genreType={type}
             />
           ))}

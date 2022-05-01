@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query';
 
 import axios from '../config/axios';
+import { NewestParams, ParamsType as PopularListParams } from '../routes';
 
 const defaultParams = {
   language: 'en-US',
@@ -10,7 +11,10 @@ const defaultParams = {
 };
 
 /* Popular */
-export const fetchPopularList = async (type: 'movie' | 'tv', params = {}) => {
+export const fetchPopularList = async (
+  type: 'movie' | 'tv',
+  params: PopularListParams
+) => {
   const { data } = await axios.get(`/discover/${type}`, {
     params: {
       ...defaultParams,
@@ -22,7 +26,7 @@ export const fetchPopularList = async (type: 'movie' | 'tv', params = {}) => {
   return data;
 };
 
-export const usePopularList = (type: 'movie' | 'tv', params = {}) => {
+export const usePopularList = (type: 'movie' | 'tv', params: PopularListParams) => {
   return useQuery(['popularList', type, { ...params }], () =>
     fetchPopularList(type, params)
   );
@@ -59,7 +63,10 @@ export const useTopRatedList = (type: 'movie' | 'tv', params = {}) => {
 };
 
 /* Trending Shows */
-export const fetchTrendingShows = async (type: 'tv' | 'movie', params = {}) => {
+export const fetchTrendingShows = async (
+  type: 'tv' | 'movie',
+  params: { page: number }
+) => {
   const { data } = await axios.get(`/trending/${type}/week`, {
     params: {
       ...defaultParams,
@@ -70,14 +77,14 @@ export const fetchTrendingShows = async (type: 'tv' | 'movie', params = {}) => {
   return data;
 };
 
-export const useTrendingShows = (type: 'tv' | 'movie', params = {}) => {
+export const useTrendingShows = (type: 'tv' | 'movie', params: { page: number }) => {
   return useQuery(['trendingShows', type, { ...params }], () =>
     fetchTrendingShows(type, params)
   );
 };
 
 /* Newest Shows */
-export const fetchNewestShows = async (type: 'tv' | 'movie', params = {}) => {
+export const fetchNewestShows = async (type: 'tv' | 'movie', params: NewestParams) => {
   const { data } = await axios.get(`/discover/${type}`, {
     params: {
       ...defaultParams,
@@ -91,14 +98,17 @@ export const fetchNewestShows = async (type: 'tv' | 'movie', params = {}) => {
   return data;
 };
 
-export const useNewestShows = (type: 'tv' | 'movie', params = {}) => {
+export const useNewestShows = (type: 'tv' | 'movie', params: NewestParams) => {
   return useQuery(['newestShows', type, { ...params }], () =>
     fetchNewestShows(type, params)
   );
 };
 
 /* Search */
-export const fetchSearch = async (type: 'movie' | 'tv', params = {}) => {
+export const fetchSearch = async (
+  type: 'movie' | 'tv',
+  params: { page: number; query: string }
+) => {
   const { data } = await axios.get(`/search/${type}`, {
     params: {
       ...defaultParams,

@@ -26,7 +26,7 @@ const StarRatingPicker = (props: {
           const isSelected = value && num <= value;
           return (
             <span
-              className={`block p-1 rounded cursor-pointer hover:bg-white hover:bg-opacity-10 transition-colors ${
+              className={`block p-1 rounded cursor-pointer hover:bg-white/10 transition-colors ${
                 disabled && 'cursor-not-allowed'
               }`}
               key={num}

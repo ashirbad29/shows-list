@@ -25,7 +25,7 @@ type FilterProps = {
   onGenreChange?: (_genre: string) => void;
 };
 
-const type_select_data = [
+const shows_type_select_data = [
   {
     id: 'movie',
     label: 'Movies',
@@ -53,6 +53,7 @@ const Filter = (props: FilterProps) => {
     disableYear = false,
     message,
   } = props;
+
   const { data: genres } = useGenres(state.type);
 
   return (
@@ -60,8 +61,10 @@ const Filter = (props: FilterProps) => {
       <span className="text-gray-400 font-medium">DISCOVER OPTIONS</span>
       <SelectInput
         label="Type"
-        options={type_select_data}
-        text={type_select_data.find((d) => d.id === state?.type)?.label || 'Select Type'}
+        options={shows_type_select_data}
+        text={
+          shows_type_select_data.find((d) => d.id === state?.type)?.label || 'Select Type'
+        }
         className="border-2 border-gray-500/20"
         wrapperClassName="mt-8"
         onChangeValue={(val) => onTypeChange && onTypeChange(val)}

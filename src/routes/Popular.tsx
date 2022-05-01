@@ -6,7 +6,7 @@ import Paginate from '../components/Paginate';
 import ShowsList from '../components/ShowsList';
 import { useGenres, usePopularList } from '../services/index';
 
-type ParamsType = {
+export type ParamsType = {
   page: number;
   with_genres?: string;
   'primary_release_date.gte'?: string;

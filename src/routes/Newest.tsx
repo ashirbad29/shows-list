@@ -6,13 +6,13 @@ import Paginate from '../components/Paginate';
 import ShowsList from '../components/ShowsList';
 import { useNewestShows } from '../services/index';
 
-type ParamsType = {
+export type NewestParams = {
   page: number;
   with_genres?: string;
   'vote_average.lte'?: number;
 };
 const Newest = () => {
-  const [params, setParams] = useState<ParamsType>({ page: 1 });
+  const [params, setParams] = useState<NewestParams>({ page: 1 });
   const [showsType, setShowsType] = useState<'movie' | 'tv'>('movie');
   const { data: newestList, isLoading } = useNewestShows(showsType, params);
 
