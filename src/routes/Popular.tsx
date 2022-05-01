@@ -17,9 +17,9 @@ const Popular = () => {
   return (
     <main className="container h-full">
       <Navbar />
-      <section className="flex flex-col">
+      <section className="flex-1 flex flex-col">
         {isLoading ? (
-          <div>Loading...</div>
+          <div className="flex flex-1 items-center justify-center">Loading...</div>
         ) : (
           <>
             <div className="flex-1">

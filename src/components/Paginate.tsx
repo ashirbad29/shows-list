@@ -9,8 +9,13 @@ const Paginate = (props: ReactPaginateProps) => {
       nextLabel={<PaginationBtn which="next" />}
       breakLabel=". . ."
       breakLinkClassName="text-2xl text-blue-500"
-      pageLinkClassName="px-3 py-1 rounded cursor-pointer bg-gray-900"
-      activeLinkClassName="ring-1 ring-blue-500 !border-none text-blue-light"
+      pageLinkClassName="px-3 py-1 cursor-pointer inline-block"
+      activeClassName="bg-blue-500 !border-none"
+      nextClassName="inline-block rounded bg-gray-900"
+      nextLinkClassName="inline-block flex items-center py-1 px-1"
+      previousClassName="inline-block rounded bg-gray-900"
+      previousLinkClassName="inline-block flex items-center py-1 px-1"
+      pageClassName="bg-gray-900 rounded inline-block"
       className="flex items-center gap-3 text-blue-light/70"
       pageRangeDisplayed={1}
       marginPagesDisplayed={2}
@@ -20,21 +25,15 @@ const Paginate = (props: ReactPaginateProps) => {
   );
 };
 
-export const PaginationBtn = ({
-  className,
-  which,
-}: {
-  className?: string;
-  which: 'prev' | 'next';
-}) => {
+export const PaginationBtn = ({ which }: { which: 'prev' | 'next' }) => {
   return (
-    <button className={`rounded bg-gray-900 p-[3px] ${className && className}`}>
+    <>
       {which === 'prev' ? (
         <ChevronLeft className="h-6 w-6" />
       ) : (
         <ChevronRight className="h-6 w-6" />
       )}
-    </button>
+    </>
   );
 };
 
