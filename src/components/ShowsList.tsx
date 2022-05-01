@@ -2,10 +2,10 @@ import ShowCard from '../components/ShowCard';
 
 type ShowListType = {
   showList: Array<any>;
-  type?: 'movie' | 'tv';
+  type: 'movie' | 'tv';
 };
 
-const ShowsList = ({ showList }: ShowListType) => {
+const ShowsList = ({ showList, type }: ShowListType) => {
   return (
     <>
       {showList && showList.length > 0 ? (
@@ -17,6 +17,7 @@ const ShowsList = ({ showList }: ShowListType) => {
               imageUrl={show.poster_path}
               genre_ids={show.genre_ids}
               release_date={show.release_date || null}
+              genreType={type}
             />
           ))}
         </div>

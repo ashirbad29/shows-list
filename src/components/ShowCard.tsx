@@ -7,11 +7,12 @@ type ShowCardType = {
   imageUrl: string;
   genre_ids: Array<string>;
   release_date: string | null;
+  genreType: 'movie' | 'tv';
 };
 
 const ShowCard = (props: ShowCardType) => {
-  const { title, imageUrl, genre_ids, release_date } = props;
-  const { data: genres } = useGenres('movie');
+  const { title, imageUrl, genre_ids, release_date, genreType } = props;
+  const { data: genres } = useGenres(genreType);
 
   return (
     <div className="flex flex-col items-center max-w-[200px]">

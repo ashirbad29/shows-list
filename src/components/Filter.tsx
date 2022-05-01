@@ -6,7 +6,7 @@ import StarRatingPicker from './StarRatingPicker';
 type YearType = { start?: string | number; end?: string | number };
 
 type FilterState = {
-  type: string;
+  type: 'movie' | 'tv';
   genre?: string;
   year?: YearType;
   rating?: number;
@@ -53,7 +53,7 @@ const Filter = (props: FilterProps) => {
     disableYear = false,
     message,
   } = props;
-  const { data: genres } = useGenres('movie');
+  const { data: genres } = useGenres(state.type);
 
   return (
     <section className="bg-gray-900/50 right-0 top-0 bottom-0 w-96 pt-9 px-6 shadow-filter">
