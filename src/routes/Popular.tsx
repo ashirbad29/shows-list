@@ -29,8 +29,8 @@ const Popular = () => {
             <div className="flex flex-1 items-center justify-center">Loading...</div>
           ) : (
             <>
-              <div className="flex-1">
-                <ShowsList showList={popularList?.results} />
+              <div className="flex-1 flex">
+                <ShowsList showList={popularList?.results} type={showType} />
               </div>
               {popularList?.results && popularList.results.length > 0 && (
                 <div className="mb-14 mt-10 flex w-full justify-center">

@@ -6,8 +6,16 @@ const StarRatingPicker = (props: {
   number?: number;
   wrapperClassName?: string;
   label?: string;
+  disabled?: boolean;
 }) => {
-  const { value, onChange, number = 5, wrapperClassName, label } = props;
+  const {
+    value,
+    onChange,
+    number = 5,
+    wrapperClassName,
+    label,
+    disabled = false,
+  } = props;
   const values = Array.from({ length: number }, (_, index) => index + 1);
 
   return (
@@ -18,10 +26,12 @@ const StarRatingPicker = (props: {
           const isSelected = value && num <= value;
           return (
             <span
-              className="block p-1 rounded cursor-pointer hover:bg-white hover:bg-opacity-10 transition-colors"
+              className={`block p-1 rounded cursor-pointer hover:bg-white hover:bg-opacity-10 transition-colors ${
+                disabled && 'cursor-not-allowed'
+              }`}
               key={num}
               onClick={() => {
-                onChange(num);
+                !disabled && onChange(num);
               }}>
               {isSelected ? (
                 <StarFilledIcon className="w-6 h-6 text-yellow-400" />

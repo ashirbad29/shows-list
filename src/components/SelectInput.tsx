@@ -12,11 +12,20 @@ type SelectInputProps = {
   wrapperClassName?: string;
   className?: string;
   onChangeValue?: (_val: string) => void;
+  disabled?: boolean;
 };
 
 const SelectInput = (props: SelectInputProps) => {
-  const { text, hideLabel, className, options, label, wrapperClassName, onChangeValue } =
-    props;
+  const {
+    text,
+    hideLabel,
+    className,
+    options,
+    label,
+    wrapperClassName,
+    onChangeValue,
+    disabled,
+  } = props;
 
   const [isOpen, setIsOpen] = useState(false);
   const handleChange = (optionId: string) => {
@@ -31,8 +40,9 @@ const SelectInput = (props: SelectInputProps) => {
       </label>
       <div className="mt-1 relative">
         <button
+          disabled={disabled}
           onClick={() => setIsOpen((open) => !open)}
-          className={`flex w-full items-center px-3 py-2 bg-gray-900 focus:outline-none focus:border-blue-500/40 transition-all rounded-md ${
+          className={`flex w-full items-center px-3 py-2 bg-gray-900 focus:outline-none focus:border-blue-500/40 transition-all rounded-md disabled:cursor-not-allowed disabled:opacity-50 ${
             className && className
           }`}>
           <span className="flex-1 font-medium truncate block text-left text-gray-400">

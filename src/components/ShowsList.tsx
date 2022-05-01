@@ -2,6 +2,7 @@ import ShowCard from '../components/ShowCard';
 
 type ShowListType = {
   showList: Array<any>;
+  type?: 'movie' | 'tv';
 };
 
 const ShowsList = ({ showList }: ShowListType) => {
@@ -12,10 +13,10 @@ const ShowsList = ({ showList }: ShowListType) => {
           {showList?.map((show: any) => (
             <ShowCard
               key={show.id}
-              title={show.title}
+              title={show.title || show.name || ''}
               imageUrl={show.poster_path}
               genre_ids={show.genre_ids}
-              release_date={show.release_date}
+              release_date={show.release_date || null}
             />
           ))}
         </div>

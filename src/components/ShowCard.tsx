@@ -5,7 +5,7 @@ type ShowCardType = {
   title: string;
   imageUrl: string;
   genre_ids: Array<string>;
-  release_date: string;
+  release_date: string | null;
 };
 
 const ShowCard = (props: ShowCardType) => {
@@ -29,9 +29,11 @@ const ShowCard = (props: ShowCardType) => {
             .map((genre: any) => genre.name)
             .join(', ')}
       </div>
-      <span className="text-gray-400 font-semibold">
-        {new Date(release_date).getFullYear()}
-      </span>
+      {release_date && (
+        <span className="text-gray-400 font-semibold">
+          {new Date(release_date).getFullYear()}
+        </span>
+      )}
     </div>
   );
 };

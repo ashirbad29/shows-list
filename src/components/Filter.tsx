@@ -17,6 +17,7 @@ type FilterProps = {
   disableGenre?: boolean;
   disableRating?: boolean;
   disableYear?: boolean;
+  message?: string;
   onFromYearChange?: (_year: string | number) => void;
   onToYearChange?: (_year: string | number) => void;
   onTypeChange?: (_type: string) => void;
@@ -47,6 +48,10 @@ const Filter = (props: FilterProps) => {
     onGenreChange,
     onTypeChange,
     onRatingChange,
+    disableGenre = false,
+    disableRating = false,
+    disableYear = false,
+    message,
   } = props;
   const { data: genres } = useGenres('movie');
 
@@ -71,6 +76,7 @@ const Filter = (props: FilterProps) => {
         className="border-2 border-gray-500/20"
         wrapperClassName="mt-8"
         onChangeValue={(val) => onGenreChange && onGenreChange(val)}
+        disabled={disableGenre}
       />
 
       <div className="flex space-x-3">
@@ -85,6 +91,7 @@ const Filter = (props: FilterProps) => {
           className="border-2 border-gray-500/20"
           wrapperClassName="mt-8 flex-1"
           onChangeValue={(val) => onFromYearChange && onFromYearChange(val)}
+          disabled={disableYear}
         />
         <SelectInput
           label="Genre"
@@ -98,6 +105,7 @@ const Filter = (props: FilterProps) => {
           className="border-2 border-gray-500/20"
           wrapperClassName="mt-8 flex justify-end flex-col flex-1"
           onChangeValue={(val) => onToYearChange && onToYearChange(val)}
+          disabled={disableYear}
         />
       </div>
 
@@ -107,8 +115,10 @@ const Filter = (props: FilterProps) => {
           value={state.rating || null}
           onChange={(val) => onRatingChange && onRatingChange(val * 2)}
           wrapperClassName="mt-8"
+          disabled={disableRating}
         />
       </div>
+      {message && <p className="mt-6 text-blue-400">{message}</p>}
     </section>
   );
 };
