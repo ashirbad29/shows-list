@@ -31,7 +31,7 @@ const Navbar = ({ onSearchInputChange }: NavbarType) => {
   const onSearchPage = pathname === '/search';
 
   return (
-    <nav className="flex justify-between items-center">
+    <nav className="flex justify-between items-center shadow pb-8 mt-3">
       <Link to="/" className="text-gray-200 text-2xl">
         Discover
       </Link>

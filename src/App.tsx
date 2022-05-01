@@ -8,7 +8,7 @@ import { Newest, Popular, Search, TopRated, Trending } from './routes';
 function App() {
   return (
     <BrowserRouter>
-      <div className="bg-gray-800">
+      <div className="bg-gray-800 min-w-[920px] overflow-auto">
         <QueryClientProvider client={queryClient}>
           <Routes>
             <Route path="/" element={<Popular />} />

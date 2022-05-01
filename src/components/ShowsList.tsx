@@ -8,7 +8,7 @@ const ShowsList = ({ showList }: ShowListType) => {
   return (
     <>
       {showList && showList.length > 0 ? (
-        <div className="flex flex-wrap mt-10 justify-around sm:justify-start gap-x-4 gap-y-12">
+        <div className="flex flex-wrap justify-around sm:justify-start gap-x-4 gap-y-12 min-w-[520px]">
           {showList?.map((show: any) => (
             <ShowCard
               key={show.id}
