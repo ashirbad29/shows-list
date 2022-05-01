@@ -24,7 +24,7 @@ const Popular = () => {
     <main className="flex">
       <div className="container h-full">
         <Navbar />
-        <section className="flex-1 flex flex-col overflow-y-auto overflow-x-scroll">
+        <section className="flex-1 flex flex-col overflow-y-auto scroll-bar">
           {isLoading ? (
             <div className="flex flex-1 items-center justify-center">Loading...</div>
           ) : (

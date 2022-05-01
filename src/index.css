@@ -15,5 +15,13 @@ code {
 }
 
 .container {
-  @apply text-white p-4 md:py-6 md:pl-6 md:pr-4 h-screen flex flex-col;
+  @apply text-white p-4 md:py-6 md:pl-6 md:pr-4 min-h-screen sm:h-screen flex flex-col;
+}
+
+.scroll-bar::-webkit-scrollbar {
+  @apply w-2;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 rounded-md;
 }

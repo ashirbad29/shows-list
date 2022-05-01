@@ -52,7 +52,7 @@ const SelectInput = (props: SelectInputProps) => {
         </button>
 
         {isOpen && (
-          <div className="absolute z-20 shadow-lg w-full mt-1 bg-gray-900 rounded-md overflow-auto max-h-60 text-gray-400">
+          <div className="absolute z-20 shadow-lg w-full mt-1 bg-gray-900 rounded-md scroll-bar overflow-auto max-h-60 text-gray-400">
             {options.map((option) => (
               <div
                 key={option.id}

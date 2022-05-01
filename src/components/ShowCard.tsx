@@ -1,3 +1,4 @@
+import Image from '../components/Image';
 import { useGenres } from '../services';
 import { getImagePath } from '../utils';
 
@@ -12,12 +13,10 @@ const ShowCard = (props: ShowCardType) => {
   const { title, imageUrl, genre_ids, release_date } = props;
   const { data: genres } = useGenres('movie');
 
-  console.log(props);
-
   return (
     <div className="flex flex-col items-center max-w-[200px]">
       <div className="w-full">
-        <img className="object-contain shadow-lg" src={getImagePath(imageUrl)} />
+        <Image className="object-contain shadow-xl" src={getImagePath(imageUrl)} />
       </div>
       <span className="font-semibold  text-blue-500 mt-2 w-full text-center">
         {title}
