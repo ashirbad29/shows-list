@@ -11,9 +11,11 @@ export type NewestParams = {
   with_genres?: string;
   'vote_average.lte'?: number;
 };
+
 const Newest = () => {
   const [params, setParams] = useState<NewestParams>({ page: 1 });
   const [showsType, setShowsType] = useState<'movie' | 'tv'>('movie');
+
   const { data: newestList, isLoading } = useNewestShows(showsType, params);
 
   return (

@@ -19,6 +19,7 @@ export type ParamsType = {
 const Popular = () => {
   const [params, setParams] = useState<ParamsType>({ page: 1 });
   const [showType, setShowType] = useState<'movie' | 'tv'>('movie');
+
   const { data: _genre } = useGenres(showType);
   const { data: popularList, isLoading } = usePopularList(showType, params);
 
