@@ -22,6 +22,6 @@
 ### Tech Used
 
 - React
-- React Query for date fetching
-- Tailwindcss (a utility classes based css framework)
-- Axios to make api requests
+- React Query for date fetching and client side caching
+- Vite for bundling
+- TailwindCSS for css needs
