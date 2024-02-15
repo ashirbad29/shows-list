@@ -1,8 +1,7 @@
 import Axios from 'axios';
 
-export const API_BASE_URL = 'https://api.themoviedb.org/3';
-const API_READ_ACCESS_TOKEN =
-  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjBjNmE3NDQ1MmJhODcyY2MxN2UxNDA5NDAyMjg3ZSIsInN1YiI6IjYyNmMxNWQ3Yzc0ZWJhMGUyODY3OGJiNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bVmecv2ali5mCBQrYuh8lGYJ4ob7gVjqRh27l5ErWZg';
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_READ_ACCESS_TOKEN = import.meta.env.VITE_API_ACCESS_TOKEN;
 
 const axios = Axios.create({
   baseURL: API_BASE_URL,

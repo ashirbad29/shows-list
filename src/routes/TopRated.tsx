@@ -13,6 +13,7 @@ type ParamsType = {
 const TopRated = () => {
   const [params, setParams] = useState<ParamsType>({ page: 1 });
   const [showsType, setShowsType] = useState<'movie' | 'tv'>('movie');
+
   const { data: _genre } = useGenres(showsType);
   const { data: topRatedList, isLoading } = useTopRatedList(showsType, params);
 
